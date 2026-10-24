@@ -4,7 +4,7 @@ public class CalculaMinutos {
 
     public static void main(String[] args) {
     	
-    	System.out.println("Clase principal");
+    	System.out.println("Clase Principal");
         if (!LogicaDelNegocio.validarParametros(args)) {
         	
             System.out.println("Error: debe ingresar exactamente 5 numeros enteros "
