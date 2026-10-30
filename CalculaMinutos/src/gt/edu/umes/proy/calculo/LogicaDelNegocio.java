@@ -10,10 +10,15 @@ public class LogicaDelNegocio {
     private static final long SEGUNDOS_POR_SEMANA = 604800L;
     private static final long SEGUNDOS_POR_MES = 2592000L;
 
+    private static final String MENSAJE_ERROR =
+            "debe ingresar exactamente 5 numeros enteros "
+            + "(meses semanas dias horas minutos).";
+
     public static boolean validarParametros(String[] parametros) {
         if (parametros == null || parametros.length != CANTIDAD_PARAMETROS) {
             return false;
         }
+
         for (String parametro : parametros) {
             try {
                 Integer.parseInt(parametro);
@@ -21,10 +26,15 @@ public class LogicaDelNegocio {
                 return false;
             }
         }
+
         return true;
     }
 
     public static long calcularSegundos(String[] parametros) {
+        if (!validarParametros(parametros)) {
+            throw new IllegalArgumentException(MENSAJE_ERROR);
+        }
+
         long meses = Integer.parseInt(parametros[0]);
         long semanas = Integer.parseInt(parametros[1]);
         long dias = Integer.parseInt(parametros[2]);

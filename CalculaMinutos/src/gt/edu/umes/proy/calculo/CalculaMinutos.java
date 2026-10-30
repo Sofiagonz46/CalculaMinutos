@@ -3,15 +3,14 @@ package gt.edu.umes.proy.calculo;
 public class CalculaMinutos {
 
     public static void main(String[] args) {
-    	
-    	System.out.println("Clase Principal");
-        if (!LogicaDelNegocio.validarParametros(args)) {
-        	
-            System.out.println("Error: debe ingresar exactamente 5 numeros enteros "
-                    + "(meses semanas dias horas minutos).");
-            return;
+
+        System.out.println("Clase Principal");
+
+        try {
+            long total = LogicaDelNegocio.calcularSegundos(args);
+            System.out.println("Total en segundos: " + total);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        long total = LogicaDelNegocio.calcularSegundos(args);
-        System.out.println("Total en segundos: " + total);
     }
 }
